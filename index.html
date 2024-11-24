@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Archiver and Camera Dashboard</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #eef2f3, #8e9eab);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .archiver {
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: #f4f4f9;
+    }
+
+    .archiver.online {
+      border: 3px solid #4caf50;
+      background-color: #e8f5e9;
+    }
+
+    .archiver.offline {
+      border: 3px solid #f44336;
+      background-color: #ffebee;
+    }
+
+    .archiver h2 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+    }
+
+    .archiver h2 span {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .archiver:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .camera-list {
+      display: none; /* Hidden by default */
+      list-style: none;
+      padding: 10px 20px;
+      margin: 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .camera-list.active {
+      display: block; /* Show when toggled */
+    }
+
+    .camera-list li {
+      margin: 5px 0;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .camera.online {
+      background-color: #e8f5e9;
+      color: #4caf50;
+    }
+
+    .camera.offline {
+      background-color: #ffebee;
+      color: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <h1>Archiver and Camera Dashboard</h1>
+
+  <!-- Archiver 1 -->
+  <div class="archiver online" onclick="toggleCameras(this)">
+    <h2>
+      Archiver: 192.168.1.1
+      <span>(Online)</span>
+    </h2>
+    <ul class="camera-list">
+      <li class="camera online">Camera: 192.168.1.101 (Online)</li>
+      <li class="camera online">Camera: 192.168.1.102 (Online)</li>
+    </ul>
+  </div>
+
+  <!-- Archiver 2 -->
+  <div class="archiver online" onclick="toggleCameras(this)">
+    <h2>
+      Archiver: 192.168.1.2
+      <span>(Online)</span>
+    </h2>
+    <ul class="camera-list">
+      <li class="camera online">Camera: 192.168.1.201 (Online)</li>
+      <li class="camera online">Camera: 192.168.1.202 (Online)</li>
+    </ul>
+  </div>
+
+  <!-- Archiver 3 -->
+  <div class="archiver offline" onclick="toggleCameras(this)">
+    <h2>
+      Archiver: 192.168.1.3
+      <span>(Offline)</span>
+    </h2>
+    <ul class="camera-list">
+      <li class="camera offline">Camera: 192.168.1.301 (Offline)</li>
+      <li class="camera offline">Camera: 192.168.1.302 (Offline)</li>
+    </ul>
+  </div>
+
+  <script>
+    // Function to toggle camera list visibility
+    function toggleCameras(archiverElement) {
+      const cameraList = archiverElement.querySelector('.camera-list');
+      cameraList.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
